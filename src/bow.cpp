@@ -27,8 +27,10 @@ std::vector<std::string> tokenize(const std::string& s) {
     for (unsigned char c : s) {
         if (std::isalpha(c)) {
             current += std::tolower(c);
-        } else if (!current.empty() && !stopwords.count(current)) {
-            words.push_back(current);
+        } else {
+            if (!current.empty() && !stopwords.count(current)) {
+                words.push_back(current);
+            }
             current.clear();
         }
     }
